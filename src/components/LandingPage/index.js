@@ -28,13 +28,7 @@ class LandingPage extends React.Component {
       const {artist} = this.props;
       return (
         <Container>
-          <Row className="justify-content-md-center">
-            <Col>
-            <Form.Control type="text" value={searched_text} placeholder="Search Artist" onChange= { (e) => {this.searchArtists(e.target.value)}} />
-            </Col>
-          </Row>
-
-          <Row> 
+            <Form.Control type="text" value={searched_text} placeholder="Search Artist" onChange= {(e) => {this.searchArtists(e.target.value)}} />
               <Card border="primary" style={{ width: '18rem' }}>
                 <Card.Img style={{ width: '18rem' }} variant="top" src={artist.image_url} />
                 <Card.Body>
@@ -42,7 +36,6 @@ class LandingPage extends React.Component {
                   <a className="btn" variant="primary" href={artist.facebook_page_url}>Facebook</a>
                 </Card.Body>
               </Card>
-          </Row>
         </Container>
       );
     }
