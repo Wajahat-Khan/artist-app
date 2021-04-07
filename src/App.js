@@ -1,14 +1,19 @@
 import './App.css';
 import LandingPage from './components/LandingPage/';
-import ArtistDetail from './components/ArtistDetail';
-import { Route, BrowserRouter } from "react-router-dom";
+import ArtistEvents from './components/ArtistEvents';
+import { Route, BrowserRouter } from 'react-router-dom';
+import store from './js/store';
+import { Provider } from 'react-redux';
+
 
 function App() {
   return (
+    <Provider store={store}>
         <BrowserRouter>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/artist/:id" component={ArtistDetail} />
+          <Route exact path="/artist/:id" component={ArtistEvents} />
         </BrowserRouter>
+    </Provider>
   );
 }
 

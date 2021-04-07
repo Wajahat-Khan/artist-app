@@ -10,7 +10,7 @@ function rootReducer(state = initialState, action) {
         case GET_ARTISTS_REQUEST:
             return { ...state, artist: {}, artist_events:[] };
         case GET_ARTISTS_SUCCESS:
-            return { ...state, artist: action.payload.artist, artist_events:[] };
+            return { ...state, artist: action.payload, artist_events:[] };
         case GET_ARTISTS_FAILURE:
             return { ...state, artist: {}, artist_events:[] }
         default:
