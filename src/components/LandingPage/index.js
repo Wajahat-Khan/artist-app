@@ -2,21 +2,30 @@ import React from 'react';
 import './styles.scss';
 import { connect } from 'react-redux';
 import { getArtist } from '../../js/actions'
-import { Container, Row, Col, Form, Card, } from 'react-bootstrap';
+import { Container, Row, Col, Form, Card, Button} from 'react-bootstrap';
 
 
 class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { searched_text: '', artist:{} }
+    this.setState({artist:{}})
+  }
+  isEmpty = (obj) => {
+    return Object.keys(obj).length === 0;
   }
 
   componentDidUpdate = (prevProps) => {
+    const {searched_text, artist} = this.state;
+
     if(prevProps.artist !== this.props.artist){
       const {searched_text} = this.state;
       if(searched_text !== ""){
         this.setState({artist:this.props.artist})
       }
+    }
+    if(searched_text === "" && !this.isEmpty(artist)){
+      this.setState({artist:{}})
     }
   }
   componentDidMount() {
@@ -31,9 +40,11 @@ class LandingPage extends React.Component {
       this.setState({artist:{}})
     }
   }
-  isEmpty = (obj) => {
-    return Object.keys(obj).length === 0;
-    }
+  
+  eventsPage = () =>{
+    const { artist } = this.state;
+    this.props.history.push(`/artist/${artist.id}`);
+  }
   render() {
     const { searched_text,artist } = this.state;
     console.log(this.state)
@@ -55,7 +66,7 @@ class LandingPage extends React.Component {
                   <Card.Text>
                     {artist.facebook_page_url}
                   </Card.Text>
-                  <a className="btn" variant="primary" href={artist.facebook_page_url}>Check Events</a>
+                  <Button variant="primary" onClick={()=>{this.eventsPage()}}>Check Events</Button>
                 </Card.Body>
               </Card>
             </Col>
