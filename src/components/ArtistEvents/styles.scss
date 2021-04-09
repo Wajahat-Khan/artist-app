@@ -1,0 +1,33 @@
+.artist-event{
+  text-align: center;
+ .artist-event-card{
+   width: 18rem;
+   height: 22rem;
+   .artist-event-image{
+     width: 100%;
+     max-height: 14rem;
+     height: 14rem;
+   }
+ }
+}
+.event-details{
+  margin-bottom: 5%;
+  .title{
+    font-weight: bold;
+    float: left;
+  }
+  .description{
+    float: right;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .artist-event {
+    justify-content: center !important;
+    display: flex !important;
+  }
+  .upcoming-events{
+    justify-content: center !important;
+    display: flex !important;
+  }
+}
