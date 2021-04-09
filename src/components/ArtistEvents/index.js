@@ -2,29 +2,29 @@ import React from 'react';
 import './styles.scss';
 import { connect } from "react-redux";
 import { getArtistEvents } from '../../js/actions'
-import { Container, Row, Col, ListGroup, ListGroupItem, Card, Button} from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, ListGroupItem, Card, Button } from 'react-bootstrap';
 
-
+// ArtistEvents Component shows details of events of artist
 class ArtistEvents extends React.Component {
-    constructor(props){
-      super(props);
-      this.state={searched_text:''}
-    }
+  constructor(props) {
+    super(props);
+    this.state = { searched_text: '' }
+  }
 
-    componentDidMount = () => {
-      const {artist} = this.props;
-      this.props.getArtistEvents(artist.name);
+  componentDidMount = () => {
+    const { artist } = this.props;
+    this.props.getArtistEvents(artist.name);
+  }
 
-    }
-
-    render(){
-      const { artist, artist_events } = this.props;
-      return (
-        <Container className="landing">
+  render() {
+    const { artist, artist_events } = this.props;
+    
+    return (
+      <Container className="landing">
         <Row className="row-top">
-        <Col>
-        <Button variant="primary" onClick={()=>{ this.props.history.push(`/`);}}>&lt; Back to Results</Button>
-        </Col>
+          <Col>
+            <Button variant="primary" onClick={() => { this.props.history.push(`/`); }}>&lt; Back to Results</Button>
+          </Col>
         </Row>
         <Row className="row-top">
           <Col className="artist-event">
@@ -45,32 +45,32 @@ class ArtistEvents extends React.Component {
           </Col>
         </Row>
         <Row className="row-top">
-         {
-           artist_events.length > 0 ? (
-            artist_events.map((event, i) => {   
-              return (
+          {
+            artist_events.length > 0 ? (
+              artist_events.map((event, i) => {
+                return (
                   <Col xs={12} md={4} lg={4} key={i}>
-                       <Card className="event-details">
-                       <Card.Header>Event Details</Card.Header>
-                          <Card.Body>
-                            <ListGroup className="list-group-flush">
-                              <ListGroupItem><span className="title">Country:</span><span className="description">{event.venue.city}</span></ListGroupItem>
-                              <ListGroupItem><span className="title">City:</span><span className="description">{event.venue.country}</span></ListGroupItem>
-                              <ListGroupItem><span className="title">Venue:</span><span className="description">{event.venue.name}</span></ListGroupItem>
-                              <ListGroupItem><span className="title">Date:</span><span className="description">{event.datetime}</span></ListGroupItem>
+                    <Card className="event-details">
+                      <Card.Header>Event Details</Card.Header>
+                      <Card.Body>
+                        <ListGroup className="list-group-flush">
+                          <ListGroupItem><span className="title">Country:</span><span className="description">{event.venue.city}</span></ListGroupItem>
+                          <ListGroupItem><span className="title">City:</span><span className="description">{event.venue.country}</span></ListGroupItem>
+                          <ListGroupItem><span className="title">Venue:</span><span className="description">{event.venue.name}</span></ListGroupItem>
+                          <ListGroupItem><span className="title">Date:</span><span className="description">{event.datetime}</span></ListGroupItem>
 
-                            </ListGroup>
-                          </Card.Body>
-                        </Card>
+                        </ListGroup>
+                      </Card.Body>
+                    </Card>
                   </Col>
-              )
-          })
-           ): (null)
-         }
+                )
+              })
+            ) : (null)
+          }
         </Row>
       </Container>
-      );
-    }
+    );
+  }
 }
 const mapDispatchToProps = dispatch => {
   return {
