@@ -9,7 +9,6 @@ class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { searched_text: '', artist:{} }
-    this.setState({artist:{}})
   }
   isEmpty = (obj) => {
     return Object.keys(obj).length === 0;
