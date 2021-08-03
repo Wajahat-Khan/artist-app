@@ -1,36 +1,39 @@
-import { GET_ARTISTS_REQUEST, GET_ARTISTS_SUCCESS, GET_ARTISTS_FAILURE,
-GET_ARTIST_EVENTS_REQUEST, GET_ARTIST_EVENTS_SUCCESS, GET_ARTIST_EVENTS_FAILURE} from '../constants/action-types';
+import {
+    GET_AIRLINES_REQUEST, GET_AIRLINES_SUCCESS, GET_AIRLINES_FAILURE,
+    GET_AIRLINE_REQUEST, GET_AIRLINE_SUCCESS, GET_AIRLINE_FAILURE
+} from '../constants/action-types';
 import API from '../../services/index';
 import { call, takeEvery, put } from 'redux-saga/effects';
 
+//generator function to fetch all airlines
 
-// generator function to fetch artist on base of search
-
-function* getArtistsBySearch(action) {
+function* getAllAirlines() {
     try {
-        const artist = yield call(API.getArtists, action.payload);
-        yield put({type: GET_ARTISTS_SUCCESS, payload: artist})
+        const airlines = yield call(API.getAllAirlines);
+        yield put({ type: GET_AIRLINES_SUCCESS, payload: airlines })
     }
     catch (error) {
-        yield put({type: GET_ARTISTS_FAILURE})
+        yield put({ type: GET_AIRLINES_FAILURE })
     }
 }
 
-//generator function to fetch events of artist
+//generator function to fetch specific airline
 
-function* getEvents(action) {
+function* getAirline(action) {
     try {
-        const events = yield call(API.getArtistEvents, action.payload);
-        yield put({type: GET_ARTIST_EVENTS_SUCCESS, payload: events})
+        const airline = yield call(API.getAllAirlineById, action.payload);
+        yield put({ type: GET_AIRLINE_SUCCESS, payload: airline })
     }
     catch (error) {
-        yield put({type: GET_ARTIST_EVENTS_FAILURE})
+        yield put({ type: GET_AIRLINE_FAILURE })
     }
 }
 
 function* rootSaga() {
-    yield takeEvery(GET_ARTISTS_REQUEST, getArtistsBySearch);
-    yield takeEvery(GET_ARTIST_EVENTS_REQUEST, getEvents);
+    yield takeEvery(GET_AIRLINES_REQUEST, getAllAirlines);
+    yield takeEvery(GET_AIRLINE_REQUEST, getAirline);
+
+
 }
 
 export default rootSaga;

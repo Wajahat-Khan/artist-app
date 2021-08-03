@@ -1,5 +1,4 @@
 import './App.css';
-import ArtistEvents from './components/Passengers';
 import { Route, BrowserRouter } from 'react-router-dom';
 import store from './js/store';
 import { Provider } from 'react-redux';

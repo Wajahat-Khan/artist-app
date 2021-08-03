@@ -32,6 +32,26 @@ const API = {
             .catch(error => {
                 return Promise.reject(error);
             });
+    },
+    getAllAirlines: () => {
+        return axios
+            .get(BASE_URL + 'airlines')
+            .then(response => {
+                return Promise.resolve(response.data);
+            })
+            .catch(error => {
+                return Promise.reject(error);
+            });
+    },
+    getAllAirlineById: (id) => {
+        return axios
+            .get(BASE_URL + `airlines/${id}`)
+            .then(response => {
+                return Promise.resolve(response.data);
+            })
+            .catch(error => {
+                return Promise.reject(error);
+            });
     }
 }
 

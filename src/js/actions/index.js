@@ -1,11 +1,16 @@
-import { GET_ARTISTS_REQUEST, GET_ARTIST_EVENTS_REQUEST } from '../constants/action-types'
+import { GET_AIRLINES_REQUEST, GET_AIRLINE_REQUEST, CLEAR_AIRLINE} from '../constants/action-types'
 
-// action to get artist on base of search
-export function getArtist(payload) {
-    return { type: GET_ARTISTS_REQUEST, payload };
+// action to get all airlines
+export function getAllAirlines() {
+    return { type: GET_AIRLINES_REQUEST };
 }
 
-// action to get events of artist
-export function getArtistEvents(payload) {
-    return { type: GET_ARTIST_EVENTS_REQUEST, payload };
+// action to get specific airline
+export function getAirline(payload) {
+    return { type: GET_AIRLINE_REQUEST, payload };
+}
+
+// action to get specific airline
+export function clearAirline() {
+    return { type: CLEAR_AIRLINE };
 }

@@ -2,13 +2,16 @@ import React from 'react';
 import './styles.scss';
 import TopNav from '../TopNav';
 import logo from '../../logo.svg';
+import { getAllAirlines } from '../../js/actions'
+import { connect } from "react-redux";
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
 
+    componentDidMount = () => {
+        this.props.getAllAirlines()
+    }
+
+    render() {
         return (
             <>
                 <TopNav />
@@ -32,5 +35,9 @@ class Home extends React.Component {
         );
     }
 }
-
-export default (Home);
+const mapDispatchToProps = dispatch => {
+    return {
+        getAllAirlines: () => dispatch(getAllAirlines()),
+    }
+}
+export default connect(null, mapDispatchToProps)(Home);

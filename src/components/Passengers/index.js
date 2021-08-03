@@ -45,10 +45,11 @@ class Passengers extends React.Component {
     return (
       <>
         <TopNav />
-        <Container className="landing">
+        <h1 class="text-center"> PASSENGERS </h1> 
+        <Container>
           <Row className="passengers-container">
             {
-              passengers.data != undefined &&
+              passengers.data !== undefined &&
               passengers.data.map(p => {
                 return (
                   <Col>
