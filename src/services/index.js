@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "https://rest.bandsintown.com/artists/";
+const BASE_URL = "https://api.instantwebtools.net/v1/";
 
 const API = {
     getArtists: (searchText) => {
@@ -16,6 +16,16 @@ const API = {
     getArtistEvents: (searchText) => {
         return axios
             .get(BASE_URL + `${searchText}/events?app_id=1`)
+            .then(response => {
+                return Promise.resolve(response.data);
+            })
+            .catch(error => {
+                return Promise.reject(error);
+            });
+    },
+    getPassengers: (page) => {
+        return axios
+            .get(BASE_URL + `passenger?page=${page}&size=10`)
             .then(response => {
                 return Promise.resolve(response.data);
             })

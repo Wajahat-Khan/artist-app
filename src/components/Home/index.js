@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import TopNav from '../TopNav';
+import logo from '../../logo.svg';
 
 class Home extends React.Component {
     constructor(props) {
@@ -11,15 +12,21 @@ class Home extends React.Component {
         return (
             <>
                 <TopNav />
-                <div className="bgimg">
-                    {/* <div className="topleft">
-                        <p>Logo</p>
-                    </div>
-                    <div className="middle">
-                        <h1>COMING SOON</h1>
-                        <hr />
-                        <p>35 days left</p>
-                    </div> */}
+                <div className="App">
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo" />
+                        <p>
+                            Landing Page
+                        </p>
+                        <a
+                            className="App-link"
+                            href="https://reactjs.org"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Learn React
+                        </a>
+                    </header>
                 </div>
             </>
         );
